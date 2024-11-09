@@ -24,20 +24,25 @@ export default {
         methods: ['GET', 'POST'],
       },
     });
-
     io.on('connection', (socket) => {
       console.log('New client connected');
 
       socket.on('message', (message) => {
         console.log(`Received message: ${message}`);
         // Echo message back to the client with a "Server:" prefix
-        const serverMessage = `Server: ${message}`;
-        socket.emit('message', serverMessage);
+        socket.emit('message', message);
+      });
+
+      socket.on('ping', () => {
+        console.log('Received ping from client:', socket.id);
+        //respond with a 'pong'
+        socket.emit('pong');
       });
 
       socket.on('disconnect', () => {
         console.log('Client disconnected');
       });
+
     });
   },
 };
