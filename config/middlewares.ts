@@ -7,7 +7,7 @@ export default [
     config: {
       enabled: true,
       // headers: '*',  
-      origin: ['http://localhost:1337', 'http://localhost:5173']
+      origin: ['http://localhost:1337', 'http://localhost:5173', 'https://chit-chat-app-navy.vercel.app']
     }
   },
   'strapi::logger',
